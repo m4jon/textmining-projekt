@@ -6,6 +6,7 @@
 package textmining;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -15,10 +16,14 @@ import java.io.IOException;
  */
 public class Reader {
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException, IOException {
 
-    try {
-     try (BufferedReader br = new BufferedReader(new FileReader("/Users/Manuel-Mac/Desktop/Series 1 Episode 01 – Pilot Episode.txt")))
+     BufferedReader br = new BufferedReader(new FileReader("/Users/Manuel-Mac/Desktop/Series 1 Episode 01 – Pilot Episode.txt"));
+         for(int i=1;i<=12;i++)
+{
+             String readLine;
+             readLine = br.readLine();
+}
   {
 
    String sCurrentLine;
@@ -27,7 +32,6 @@ public class Reader {
     System.out.println(sCurrentLine);
    }
 }
-  } catch (IOException e) {
   } 
 }
-}
+
