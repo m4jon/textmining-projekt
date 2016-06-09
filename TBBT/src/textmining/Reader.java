@@ -5,33 +5,42 @@
  */
 package textmining;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.File;
 
 /**
  *
  * @author Manuel-Mac
  */
 public class Reader {
-    
-    public static void main(String[] args) throws FileNotFoundException, IOException {
 
-     BufferedReader br = new BufferedReader(new FileReader("/Users/Manuel-Mac/Desktop/Series 1 Episode 01 – Pilot Episode.txt"));
-         for(int i=1;i<=12;i++)
-{
-             String readLine;
-             readLine = br.readLine();
+    public static void main(String[] args) throws IOException {
+        String target_dir = "/Users/Manuel-Mac/Desktop/txt";
+        File dir = new File(target_dir);
+        File[] files = dir.listFiles();
+
+        for (File f : files) {
+            if(f.isFile()) {
+                BufferedReader inputStream = null;
+
+                try {
+                    inputStream = new BufferedReader(
+                                    new FileReader(f));
+                    String line;
+
+                    while ((line = inputStream.readLine()) != null) {
+                        System.out.println(line);
+                    }
+                }
+                finally {
+                    if (inputStream != null) {
+                        inputStream.close();
+                    }
+                }
+            }
+        }
+    }
+
 }
-  {
-
-   String sCurrentLine;
-
-   while ((sCurrentLine = br.readLine()) != null) {
-    System.out.println(sCurrentLine);
-   }
-}
-  } 
-}
-
