@@ -21,10 +21,10 @@ import java.util.regex.Pattern;
 public class Reader {
 
     public static void main(String[] args) throws IOException {
-        String target_dir = "C:\\Users\\Zeisl\\Desktop\\Seasons";
+        String target_dir = "/Users/Manuel-Mac/Desktop/Series 1 Episode 01 – Pilot Episode.txt";
         File dir = new File(target_dir);
         File[] files = dir.listFiles();
-        Map<String, Speaker> speaker = new HashMap<>();
+        // Map<String, Speaker> speaker = new HashMap<>();
         StringBuilder fulltextBuilder = new StringBuilder();
 
         for (File f : files) {
@@ -59,3 +59,4 @@ public class Reader {
             }
         }
     }
+}
