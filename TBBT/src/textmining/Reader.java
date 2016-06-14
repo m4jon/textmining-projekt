@@ -21,11 +21,12 @@ import java.util.regex.Pattern;
 public class Reader {
 
     public static void main(String[] args) throws IOException {
-        String target_dir = "/Users/Manuel-Mac/Desktop/Series 1 Episode 01 – Pilot Episode.txt";
+        String target_dir = "/Users/Manuel-Mac/Desktop/txt";
         File dir = new File(target_dir);
         File[] files = dir.listFiles();
-        // Map<String, Speaker> speaker = new HashMap<>();
+       // Map<String, Speaker> speaker = new HashMap<>();
         StringBuilder fulltextBuilder = new StringBuilder();
+       // Map<String, Cleantext> CleanText = new HashMap<>();
 
         for (File f : files) {
             if(f.isFile()) {
@@ -36,13 +37,13 @@ public class Reader {
          
                     while (null != (line = inputStream.readLine())) {
                         fulltextBuilder.append(line);
-                        System.out.println(line);
+                        //System.out.println(line);
                     }
                     
                     String fulltext = fulltextBuilder.toString();
                     // StringBuffer Bereinigung = new StringBuffer();
                     
-                    Pattern Klammern;
+                   /* Pattern Klammern;
                     Klammern = Pattern.compile(("[\\(\\w\\s\\W\\)]"));
                     Matcher m = Klammern.matcher(fulltext);
                     fulltext = m.replaceAll("");
@@ -51,12 +52,25 @@ public class Reader {
                         String tagname = m.group(1);
                         if (tagname.startsWith("/(")) {
                             tagname.replace("[\\(\\w\\s\\W\\)]", "");
-                        }
+                        }*/
+                 
+                 
+                 String speakers =  "/:";
+                 Pattern pcolon = Pattern.compile(speakers);
+                 Matcher mcolon = pcolon.matcher(fulltext);
+                 
+                 if (mcolon.find()) {
+                     
+                     String Sprecher = mcolon.group(1);
+                     String Monolog = mcolon.group(2);
+                     System.out.println( mcolon.group());
+                 }
                     
                     
+                   
                     }
                 } 
             }
-        }
+                }
     }
-}
+
