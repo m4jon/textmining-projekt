@@ -11,8 +11,6 @@ import java.io.IOException;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  *
@@ -21,56 +19,32 @@ import java.util.regex.Pattern;
 public class Reader {
 
     public static void main(String[] args) throws IOException {
-        String target_dir = "/Users/Manuel-Mac/Desktop/txt";
+        String target_dir = "/Users/Manuel-Mac/Documents/Projekte/txt";
         File dir = new File(target_dir);
         File[] files = dir.listFiles();
-       // Map<String, Speaker> speaker = new HashMap<>();
-        StringBuilder fulltextBuilder = new StringBuilder();
-       // Map<String, Cleantext> CleanText = new HashMap<>();
+        Map<String, String> speakers = new HashMap<>();
+        
 
         for (File f : files) {
             if(f.isFile()) {
-                try (
-                        BufferedReader inputStream = new BufferedReader(
+                try (BufferedReader inputStream = new BufferedReader(
                         new FileReader(f))) {
-                    String line;
-         
-                    while (null != (line = inputStream.readLine())) {
-                        fulltextBuilder.append(line);
-                        //System.out.println(line);
-                    }
+                    String line = null;
                     
-                    String fulltext = fulltextBuilder.toString();
-                    // StringBuffer Bereinigung = new StringBuffer();
+                    String string = line;
+                    String[] parts = string.split(":");
+                    String Speaker = parts[0];
+                    String Monolog = parts[1];
                     
-                   /* Pattern Klammern;
-                    Klammern = Pattern.compile(("[\\(\\w\\s\\W\\)]"));
-                    Matcher m = Klammern.matcher(fulltext);
-                    fulltext = m.replaceAll("");
-                    
-                    if (m.find()) {
-                        String tagname = m.group(1);
-                        if (tagname.startsWith("/(")) {
-                            tagname.replace("[\\(\\w\\s\\W\\)]", "");
-                        }*/
-                 
-                 
-                 String speakers =  "/:";
-                 Pattern pcolon = Pattern.compile(speakers);
-                 Matcher mcolon = pcolon.matcher(fulltext);
-                 
-                 if (mcolon.find()) {
-                     
-                     String Sprecher = mcolon.group(1);
-                     String Monolog = mcolon.group(2);
-                     System.out.println( mcolon.group());
-                 }
-                    
-                    
+                    speakers.put(Speaker, Monolog);
                    
-                    }
-                } 
-            }
-                }
-    }
+                    
 
+                    while ((line = inputStream.readLine()) != null) {
+                        // System.out.println(speakers);
+                    }
+                }
+            }
+        }
+    }
+}
