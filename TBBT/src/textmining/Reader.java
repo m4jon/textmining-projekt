@@ -1,8 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
+/* 
+* To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+ 
 package textmining;
 
 import java.io.FileReader;
@@ -29,22 +30,23 @@ public class Reader {
             if(f.isFile()) {
                 try (BufferedReader inputStream = new BufferedReader(
                         new FileReader(f))) {
-                    String line = null;
-                    
-                    String string = line;
-                    String[] parts = string.split(":");
-                    String Speaker = parts[0];
-                    String Monolog = parts[1];
-                    
-                    speakers.put(Speaker, Monolog);
                    
                     
-
-                    while ((line = inputStream.readLine()) != null) {
-                        // System.out.println(speakers);
+                   String line = inputStream.readLine();
+                  
+                   while (line != null) {
+                    String[] parts = line.split(":");
+                    String Speaker = parts[0];
+                    String Monolog;
+                       Monolog = parts[1];
+                   
+                   speakers.put(Speaker, Monolog);
+                   
+                   System.out.println(speakers);
+                   }
+                      
                     }
                 }
             }
         }
     }
-}
