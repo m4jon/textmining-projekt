@@ -44,7 +44,7 @@ public class Reader {
                     //Suche nach Klammern und deren Inhalt (Im Drehbuch Anweisungen) und ersetzte diese durch nichts.
                     Pattern PatternKlammer = Pattern.compile ("[\\(\\w\\W\\)]");
                     Matcher MatcherKlammer = PatternKlammer.matcher(line);
-                    line = MatcherKlammer.replaceAll("");     
+                    adjusted = MatcherKlammer.replaceAll("");     
                     
                     //Suche nach Zeilen mit Doppelpunkt - Speichere alles vor dem Doppelpunkt als Speaker, alles nach dem Doppelpunkt als Dialog
                     String[] parts = line.split(":");
@@ -55,7 +55,7 @@ public class Reader {
                    
                    speakers.put(Speaker, Monolog);
                    
-                   System.out.println(adjusted);
+                   System.out.println(speakers);
                    }
                       
                     }
