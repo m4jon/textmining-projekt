@@ -23,7 +23,7 @@ public class Reader {
         // Erstellen  des Parser-Objekts für Übergabe
        Parser TBBTParser = new Parser();     
        
-        String target_dir = "C:\\Users\\Zeisl\\Desktop\\Seasons";
+        String target_dir = "/Users/Manuel-Mac/Documents/Projekte/txt";
         File dir = new File(target_dir);
         File[] files = dir.listFiles();
 
