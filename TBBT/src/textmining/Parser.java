@@ -9,12 +9,22 @@ package textmining;
  *
  * @author Manuel-Mac
  */
-public class Parser {
-
-    // Übergabe des Strings "fulltext" aus der Reader-Klasse
+public class Parser{
+    
+    
     private String fulltext;
-    public void setString(String inputString)
+    
+    //Löscht bestimmmte Zeichen aus String
+    public String bearbeiteString(String inputString)
     {
-        this.fulltext= inputString;
+        //Übergabe des Parameters
+        this.fulltext = inputString;
+        
+        //Löschen von leeren Zeilen
+        
+        String adjusted = fulltext.replaceAll("(?m)^[ \t]*\r?\n", "");
+        
+        //Rückgabe des bearbeiteten Strings
+        return fulltext;
     }
 }

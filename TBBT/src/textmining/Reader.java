@@ -12,16 +12,18 @@ import java.io.IOException;
 
 /**
  *
- * @author Zeisl
+ * @author Manuel-Mac
  */
 public class Reader {
     
+    private String adjusted;
+    
     public static void main(String[] args) throws IOException {
-       // Erstellen  des Parser-Objekts für Übergabe
-       Parser TBBTParser = new Parser();
+      
+        // Erstellen  des Parser-Objekts für Übergabe
+       Parser TBBTParser = new Parser();     
        
-        
-       String target_dir = "/Users/Manuel-Mac/Documents/Projekte/txt";
+        String target_dir = "C:\\Users\\Zeisl\\Desktop\\Seasons";
         File dir = new File(target_dir);
         File[] files = dir.listFiles();
 
@@ -33,14 +35,13 @@ public class Reader {
 
                     while ((fulltext = inputStream.readLine()) != null) {
                     
-                        // Übergabe an Klasse Parser
-                        TBBTParser.setString(fulltext);
+                        // Übergabe an Parser
+                        adjusted = TBBTParser.bearbeiteString(fulltext);
                                 
-                     System.out.println(fulltext);
+                        System.out.println(adjusted);
                     }
                 }
             }
         }
     }
-
 }
