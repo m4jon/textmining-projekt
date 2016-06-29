@@ -16,11 +16,9 @@ import java.io.IOException;
  */
 public class Reader {
     
-    private String adjusted;
-    
     public static void main(String[] args) throws IOException {
       
-        // Erstellen  des Parser-Objekts für Übergabe
+        // Erstellen  des Parser-Objekts für Übergabe an Parser/Reader
        Parser TBBTParser = new Parser();     
        
         String target_dir = "/Users/Manuel-Mac/Documents/Projekte/txt";
@@ -36,9 +34,9 @@ public class Reader {
                     while ((fulltext = inputStream.readLine()) != null) {
                     
                         // Übergabe an Parser
-                        adjusted = TBBTParser.bearbeiteString(fulltext);
+                        TBBTParser.setString(fulltext);
                                 
-                        System.out.println(adjusted);
+                        System.out.println(fulltext);
                     }
                 }
             }
