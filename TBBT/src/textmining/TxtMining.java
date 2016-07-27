@@ -5,7 +5,7 @@
  */
 package textmining;
 
-import java.io.BufferedReader; //Scanner oder Read von ner File
+import java.io.BufferedReader; //Scanner oder Read von File
 import java.io.File;
 import java.io.FileReader; //Get the File
 import java.util.*; //Für Vector
@@ -14,12 +14,9 @@ import java.util.*; //Für Vector
  *
  * @author Manuel-Mac
  */
-public class TxtMining 
+public class TxtMining
 {
-
-    public static void main(String[] args) throws Exception
-    {  
-        
+    public static void main(String[] args) throws Exception {  
         // für den Praser
         String emptySpace = "   ";
         String newScene = "Scene:";
@@ -46,6 +43,7 @@ public class TxtMining
         {
             if(f.isFile()) {
                 BufferedReader reader = new BufferedReader(new FileReader(f));
+                System.out.println(f.getName());
                 do{       
                     line = reader.readLine();
                     if(line.contains(newSpeaker) && !line.contains(newScene) && !line.contains("Flags:")) {
@@ -71,7 +69,8 @@ public class TxtMining
                 }while(line.contains(ende) != true);
             }
         }
-        //Bereinunung und Aussgabe
+        //Bereinunung von "null" und Klammerne
+        System.out.println("Starte Bereinung von Klammern");
         hashMap.entrySet().stream().forEach((Map.Entry<String, String> e) -> {
             int startIndex,endIndex;
             String toBeReplaced="",replacement="";
@@ -84,6 +83,11 @@ public class TxtMining
             }
             e.setValue(e.getValue().substring(4));    
             System.out.println(e.getKey() + " = " + e.getValue());
+            //System.out.println(e.getKey());
         });
+        System.out.println(hashMap.size());
+        //getOrDefault(rawText.substring(start,i);
+        Speaker newSpeakerxD = new Speaker("Voice of Spock",hashMap.get("Voice of Spock"),10);
+        System.out.println(newSpeakerxD.getRawText());
     }
 }
