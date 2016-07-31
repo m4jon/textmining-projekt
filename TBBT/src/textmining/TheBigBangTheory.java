@@ -14,24 +14,28 @@ import java.util.Vector;
  *
  * @author Manuel-Mac
  */
-public class Main {
+public class TheBigBangTheory {
+
+    /**
+     * @param args the command line arguments
+     */
     private Vector<Speaker> vSpeaker;
     public static void main(String[] args) throws IOException {
         Vector<Speaker> vSpeaker = new Vector();
         Map<String, String> hashMap = new HashMap<>();
         
         Reader reader = new Reader(hashMap,vSpeaker);
-
-        /*vSpeaker.get(13).printOutStats();
+        /*
+        vSpeaker.get(13).printOutStats();
         vSpeaker.get(13).outPutHashMap();
         System.out.println(vSpeaker.get(13).getRawText());
         vSpeaker.get(13).sortWordsQuantity();
         vSpeaker.get(13).outPutHashMap();
         */
         //sortVectorAfterWords();
-
         Dialog dialog = new Dialog(vSpeaker);
         dialog.showInfos();
         dialog.listTop10Speaker();
+        
     }
 }
